@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.opensixen.server.manager.ui.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="org.opensixen.server.manager.ui.Perspective"
+            id="org.opensixen.server.manager.ui.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="true"
+            class="org.opensixen.server.manager.ui.views.ConnectionView"
+            icon="icons/sample2.gif"
+            id="org.opensixen.server.manager.ui.views.ConnectionView"
+            name="Database configuration ">
+      </view>
+      <view
+            allowMultiple="true"
+            class="org.opensixen.server.manager.ui.NavigationView"
+            icon="icons/sample3.gif"
+            id="org.opensixen.server.manager.ui.navigationView"
+            name="Navigation view"
+            restorable="true">
+      </view>
+      <view
+            allowMultiple="true"
+            class="org.opensixen.server.manager.ui.views.ServerInstalledSoftwareView"
+            icon="icons/sample2.gif"
+            id="org.opensixen.server.manager.ui.serverInstalledSoftwareView"
+            name="Server Installed Software">
+      </view>
+      <view
+            allowMultiple="true"
+            class="org.opensixen.server.manager.ui.views.RepositoriesView"
+            icon="icons/sample2.gif"
+            id="org.opensixen.server.manager.ui.views.RepositoriesView"
+            name="Repositories View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            name="Mail"
+            id="org.opensixen.server.manager.ui.category">
+      </category>
+      <command
+            name="Open Mailbox"
+            description="Opens a mailbox"
+            categoryId="org.opensixen.server.manager.ui.category"
+            id="org.opensixen.server.manager.ui.open">
+      </command>
+      <command
+            name="Open Message Dialog"
+            description="Open a message dialog"
+            categoryId="org.opensixen.server.manager.ui.category"
+            id="org.opensixen.server.manager.ui.openMessage">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.opensixen.server.manager.ui.open"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+2">
+      </key>
+      <key
+            commandId="org.opensixen.server.manager.ui.openMessage"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+3">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="CTRL+X">
+      </key>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.opensixen.server.manager.ui.application"
+            name="Opensixen Server Manager">
+         <property
+               name="aboutText"
+               value="RCP Mail template created by PDE">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/sample2.gif">
+         </property>
+         <property
+               name="aboutImage"
+               value="product_lg.gif">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
