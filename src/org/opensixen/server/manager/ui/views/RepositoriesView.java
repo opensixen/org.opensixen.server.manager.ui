@@ -60,10 +60,6 @@
  * ***** END LICENSE BLOCK ***** */
 package org.opensixen.server.manager.ui.views;
 
-import java.io.File;
-import java.net.URI;
-import java.util.List;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -71,11 +67,9 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.part.ViewPart;
-import org.opensixen.p2.P2;
-import org.opensixen.p2.P2Director;
-import org.opensixen.p2.applications.InstallJob;
-import org.opensixen.p2.applications.InstallableApplication;
-import org.opensixen.p2.applications.InstallableUnitData;
+import org.opensixen.market.model.Market;
+import org.opensixen.market.model.MarketList;
+import org.opensixen.market.model.Plugin;
 
 /**
  * RepositoriesView 
@@ -111,17 +105,9 @@ public class RepositoriesView extends ViewPart{
 		col_url.pack();										
 	}
 
-	public void load()	{
-		/*
-		URI[] repositories = P2Director.get().getRepositories();
-		for (URI repo :repositories)	{			
-			TableItem item = new TableItem (table, SWT.NONE);
-			
-				item.setText(0, repo.toString());
-		}
-		*/
-		
+	public void load()	{		
 		// Test code
+		/*
 		InstallableApplication app = new InstallableApplication();
 		app.setID("feature.asesoriahc.feature.group");
 		File update_dir = new File("/tmp/asesoria");
@@ -132,7 +118,15 @@ public class RepositoriesView extends ViewPart{
 		job.addInstallableApplication(app);
 		
 		P2Director.get().install(job);
+		*/
 		
+		
+		
+		MarketList list = Market.getMarketList();
+		for (Plugin plugin:list.getPlugin())	{
+			TableItem item = new TableItem (table, SWT.NONE);
+			item.setText(0, plugin.getName());
+		}		
 	}
 	
 
